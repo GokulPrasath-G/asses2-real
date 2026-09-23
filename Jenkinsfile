@@ -5,7 +5,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
-            }
+           text
+Hello, Jenkins!
+``` }
         }
 
         stage('Show Build Info') {
@@ -24,6 +26,12 @@ pipeline {
                     python -m pip install -r requirements.txt
                     python -m flake8 app.py
                 '''
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                bat 'python app.py'
             }
         }
     }
